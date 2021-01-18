@@ -8,6 +8,6 @@ for i in name_list:
     d = ImageDraw.Draw(im)
     location = (121, 600)
     text_color = (0,188,255)
-    selectFont = ImageFont.truetype("C:/WINDOWS/FONTS/GEORGIA.TTF", 100)
+    selectFont = ImageFont.truetype("C:/WINDOWS/FONTS/SEGOEUI.TTF", 100)
     d.text(location, i, fill = ((text_color)), font = selectFont)
     im.save("Certificate_" + i + ".png")
