@@ -8,9 +8,9 @@ from email import encoders
 
 
 # Globals 
-sender_address = 'kiit.mspc@outlook.com'
-sender_pass = 'msackiit@1234'
-base_dir = 'C:/Users/KIIT/Desktop/CYBER/'
+sender_address = ' ' #your's email id
+sender_pass = ' ' #email id password
+base_dir = '  ' #path of folder on local machine
 
 
 def send_certificates():
@@ -21,22 +21,22 @@ def send_certificates():
     for idx, item in enumerate(name_list):
         print(d1['email'][idx],'\n')
         if idx == 0:
-            im = Image.open(base_dir + 'c1.png')
+            im = Image.open(base_dir + ' #image file name')
         elif idx == 1:
-            im = Image.open(base_dir + 'c1.png')
+            im = Image.open(base_dir + '#image file name')
         elif idx == 2:
-            im = Image.open(base_dir + 'c1.png')
+            im = Image.open(base_dir + '#image file name')
         elif idx < 10:
-            im = Image.open(base_dir + 'c1.png')
+            im = Image.open(base_dir + '#image file name')
         else:
-            im = Image.open(base_dir + 'c1.png')
+            im = Image.open(base_dir + '#image file name')
         d = ImageDraw.Draw(im)
         location = (189, 860)
         text_color = (0, 153, 255)
         selectFont = ImageFont.truetype("C:/WINDOWS/FONTS/SEGOEUI.TTF", 150)
         d.text(location, item, fill = ((text_color)), font = selectFont)
         file_name = item.replace(' ','').lower()
-        im.save(base_dir + "certificates/" + file_name + ".png")
+        im.save(base_dir + "certificates/" + file_name + ".png") #do create the folder with name certificates in base directory  
         send_mail(session, d1['email'][idx], item, 'certificates/%s.png' %file_name)
     close_session(session)
 
@@ -48,12 +48,8 @@ def send_mail(session, receiver_address, participant, file_name):
     message['To'] = receiver_address
     message['Subject'] = 'Certificate For Cyber Security Workshop'
     content = f''' Hello,
-    Thank you for participating in Cyber Security Workshop organised by KIIT KAKSHA with MSAC KIIT.
-    We have attached your certificate in this mail. After getting the Certificates fill out this too:- https://bit.ly/2NsojsN \n
-    Link for recording:-https://www.youtube.com/watch?v=lG-JFVp5YTQ \n
-    Resources link:-https://docs.google.com/presentation/d/1Ed-FZP5zW-7kvIA3URbBd4u_vna_Sv8f1oDvh8fpUBU/edit?usp=sharing
-    \nThank you
-    \n\n Regards \n KIIT KAKSHA & MSAC KIIT \n
+    Thank you for participating 
+    # body of email
     ''' 
     #The body and the attachments for the mail
     message.attach(MIMEText(content, 'plain'))
@@ -72,7 +68,7 @@ def send_mail(session, receiver_address, participant, file_name):
     session.sendmail(sender_address, receiver_address, text)
 
 def setup_session():
-    session = smtplib.SMTP(host='smtp-mail.outlook.com', port=587) #use gmail with port
+    session = smtplib.SMTP(host='smtp-mail.outlook.com', port=587) #use outlook with port # for gmail change host = smtp.google.com
     session.starttls() #enable security
     session.login(sender_address, sender_pass) #login with mail_id and password
     return session
