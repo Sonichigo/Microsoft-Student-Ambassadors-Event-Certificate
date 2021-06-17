@@ -1,3 +1,5 @@
+#Generate Certificates and Send directly to participants
+
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 import smtplib
